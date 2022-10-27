@@ -1,0 +1,11 @@
+<h1>{{proyecto.title}}</h1>
+
+<p>{{proyecto.descripcion}}</p>
+
+<a href="{% url 'portfolio:modificarProyecto' proyecto.id %}">Modificar proyecto</a>
+
+<form action="{% url 'portfolio:eliminarProyecto' proyecto.id %}" method="POST">
+  {% csrf_token %}
+  <button>Eliminar proyecto</button>
+</form>
+<p>{{proyecto.user}}</p>

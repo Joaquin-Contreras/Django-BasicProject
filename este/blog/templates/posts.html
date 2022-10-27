@@ -1,0 +1,46 @@
+{% extends 'layouts/base.html' %} {% block content %}
+
+<h1><center>Publicaciones</center></h1>
+
+<a href="crearPost">Crear una publicación</a>
+
+<div class="post-container">
+  <div>
+    <h3>Temas</h3>
+    <hr />
+    <ul>
+      <li>
+        <a href="/blog/">Todo</a>
+      </li>
+      {% for tem in temas %}
+      <li>
+        <a href="{% url 'blog:posts' %}?q={{tem.tema}}">{{tem.tema}}</a>
+      </li>
+    {% endfor %}
+    </ul>
+  </div>
+  <div>
+    <h2>Mis publicaciones</h2>
+    {% for post in postMios %}
+    <ul>
+      <li>
+        <a href="{% url 'blog:postdetalle' post.id %}">{{post.titulo}}</a>
+        <p>{{post.contenido|striptags|truncatechars:100}}</p>
+        <h3>{{post.fecha|date:'d M Y'|upper}}</h3>
+      </li>
+    </ul>
+    {% endfor %}
+    <hr>
+    <h2>Publicaciones de la comunidad</h2>
+    <ul>
+      {% for post in posts %}
+      <li>
+        <a href="{% url 'blog:postdetalle' post.id %}">{{post.titulo}}</a>
+        <p>{{post.contenido|striptags|truncatechars:100}}</p>
+        <h3>{{post.fecha|date:'d M Y'|upper}}</h3>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+ {% endblock %}

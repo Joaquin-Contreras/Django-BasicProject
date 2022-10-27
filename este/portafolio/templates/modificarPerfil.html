@@ -1,0 +1,10 @@
+{% extends 'layouts/base.html' %} 
+{% block content %}
+    {{error}}
+<form metho="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button>Modificar</button>
+</form>
+{% endblock content %}
+    

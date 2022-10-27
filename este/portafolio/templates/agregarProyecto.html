@@ -1,0 +1,15 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+<h1>Agregar proyecto</h1>
+
+<form method="POST">
+  {{error}} {% csrf_token %} {{form.as_p}}
+  <button>Crear proyecto</button>
+</form>
+
+<a href="/portfolio">Volver</a>
+
+
+{% endblock %}

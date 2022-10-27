@@ -1,0 +1,21 @@
+{% extends 'layouts/base.html' %} {% block content %}
+
+<h1>{{user.username}}</h1>
+
+<h2>{{infoUser.descripcion}}</h2>
+<h2>{{infoUser.lenguajes}}</h2>
+
+<a href="{% url 'portfolio:modificarPerfil' user.id %}">Modificar perfíl</a>
+
+
+<h1>Lista de proyectos</h1>
+<ul>
+  {% for proyecto in proyectos %}
+  <li>{{proyecto.title}}</li>
+  <p>{{proyecto.descripcion|striptags|truncatechars:30}}</p>
+  <a href="{% url 'portfolio:proyectoDetalle' proyecto.id %}">Más información</a>
+  {% endfor %} 
+</ul>
+
+<a href="agregarProyecto">Agregar proyecto</a>
+{% endblock %}
